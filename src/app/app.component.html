@@ -1,4 +1,20 @@
 <h1>Comments</h1>
 <ul>
-    <li *ngFor="let comment of comments">{{comment}}</li>
+    <li *ngFor="let comment of comments; let i = index; ">{{comment.author}} says: '{{comment.commentText}}'
+    <button *ngIf='!comment.showEdit' (click)="showUpdate(i)">Edit</button>
+    <input *ngIf='comment.showEdit' type="text" [(ngModel)]="updateCommentText" placeholder="Edit comment">
+    <input *ngIf='comment.showEdit' type="text" [(ngModel)]="updateAuthor" placeholder="Edit author">
+    <button *ngIf='comment.showEdit' (click)="updateComment(i)">Submit changes</button> 
+    <button *ngIf='!comment.showEdit' (click)="deleteComment(i)">Delete</button>
+    </li>
 </ul>
+<div>
+<h2>Add a comment</h2>
+<input type="text" [(ngModel)]="commentText" placeholder="What is the comment?">
+<input type="text" [(ngModel)]="author" placeholder="Who said it?">
+<button (click)="addComment()">Submit new comment</button>
+</div>
+
+
+
+ 
