@@ -1,20 +1,62 @@
 <h1>Comments</h1>
-<ul>
-    <li *ngFor="let comment of comments; let i = index; ">{{comment.author}} says: '{{comment.commentText}}'
-    <button *ngIf='!comment.showEdit' (click)="showUpdate(i)">Edit</button>
-    <input *ngIf='comment.showEdit' type="text" [(ngModel)]="updateCommentText" placeholder="Edit comment">
-    <input *ngIf='comment.showEdit' type="text" [(ngModel)]="updateAuthor" placeholder="Edit author">
-    <button *ngIf='comment.showEdit' (click)="updateComment(i)">Submit changes</button> 
-    <button *ngIf='!comment.showEdit' (click)="deleteComment(i)">Delete</button>
-    </li>
-</ul>
-<div>
-<h2>Add a comment</h2>
-<input type="text" [(ngModel)]="commentText" placeholder="What is the comment?">
-<input type="text" [(ngModel)]="author" placeholder="Who said it?">
-<button (click)="addComment()">Submit new comment</button>
+<div class="row">      
+    <ul class="collection">
+        <div class="row">
+            <li class="collection-item" *ngFor="let comment of comments; let i = index; ">{{comment.author}} says: '{{comment.commentText}}'
+            <button *ngIf='!comment.showEdit' class="waves-effect waves-light btn" (click)="showUpdate(i)">Edit
+                <i class="material-icons right">edit</i>
+            </button>
+            <input *ngIf='comment.showEdit' type="text" [(ngModel)]="updateCommentText" placeholder="Edit comment">
+            <input *ngIf='comment.showEdit' type="text" [(ngModel)]="updateAuthor" placeholder="Edit author">
+            <button *ngIf='comment.showEdit' class="btn waves-effect waves-light" type="submit" (click)="updateComment(i)">Submit changes
+                <i class="material-icons right">send</i>
+            </button> 
+            <button *ngIf='!comment.showEdit' class="waves-effect waves-light btn" (click)="deleteComment(i)">Delete
+                <i class="material-icons right">delete</i>
+            </button>
+            </li>
+        </div>
+    </ul>
+</div>
+<div class="row">
+    <div class="col s12">
+        <h3>Add a comment</h3>
+    </div>
+    <div class="row">
+        <div class="input-field col s4">
+            <input type="text" id="commentField" [(ngModel)]="commentText">
+            <label for="commentField">What is the comment?</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s4">
+            <input type="text" id="authorField" [(ngModel)]="author">
+            <label for="authorField">Who said it?</label>
+        </div>    
+    </div>
+    <div class="row">
+        <div class="col s4">
+            <button class="waves-effect waves-light btn" (click)="addComment()">Submit
+            <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </div>    
 </div>
 
-
+<!-- <div class="col s12 m6" *ngFor="let comment of comments; let i = index;">
+    <div class="card blue-grey darken-1"
+        <div class="card-content white-text">
+            <span class="card-title">{{comment.author}}</span>
+            <p>'{{comment.commentText}}'</p>
+        </div>
+        <div class="card-action">
+            <button *ngIf='!comment.showEdit' class="waves-effect waves-light btn" (click)="deleteComment(i)">Delete
+                <i class="material-icons right">delete</i>
+            </button>
+            <button *ngIf='!comment.showEdit' class="waves-effect waves-light btn" (click)="showUpdate(i)">Edit
+                <i class="material-icons right">edit</i>
+            </button>
+    </div>
+</div> -->
 
  
